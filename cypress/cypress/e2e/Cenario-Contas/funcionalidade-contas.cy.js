@@ -1,11 +1,10 @@
 /// <reference types="cypress" />
 
-//Esse cenario de teste tem como objetivo testar a função listar contas.
+//Esse cenario de teste tem como objetivo testar a funcionalidade contas.
 //Autor: Vinicius gomes andrade
-
 const { faker } = require('@faker-js/faker');
 
-describe('Primeiro fazer login no site', () => {
+describe('FUNCIONALIDADE CONTAS', () => {
     beforeEach(() => {
       cy.visit('https://seubarriga.wcaquino.me/login')
       cy.get('#email').type('vinijk91@gmail.com')
@@ -15,12 +14,19 @@ describe('Primeiro fazer login no site', () => {
     })
     afterEach( () => {
         cy.screenshot()
-
     });
-
-    it('login no site seubarriga', () => {
+    it('acessar a função conta no site seubarriga', () => {
         cy.get('.dropdown-toggle').click()
         cy.get('.dropdown-menu > :nth-child(2) > a').click()
+
+    })
+    it('adicionar conta', () => {
+        cy.get('.dropdown-toggle').click()
+        cy.get('.dropdown-menu > :nth-child(1) > a').click()
+        cy.get('#nome').click()
+        cy.get('#nome').type(faker.name.fullName())
+        cy.get('.btn').click()
+        cy.get('.alert').should('contain', 'Conta adicionada com sucesso!')
 
     })
     it('editar contas', () => {
@@ -36,7 +42,7 @@ describe('Primeiro fazer login no site', () => {
     it('excluir contas', () => {
         cy.get('.dropdown-toggle').click()
         cy.get('.dropdown-menu > :nth-child(2) > a').click()
-        cy.get('[href="/removerConta?id=1900061"] > .glyphicon').click()
+        cy.get('[href="/removerConta?id=1902133"] > .glyphicon').click()
         cy.get('.alert').should('contain','Conta removida com sucesso!')
 
     })

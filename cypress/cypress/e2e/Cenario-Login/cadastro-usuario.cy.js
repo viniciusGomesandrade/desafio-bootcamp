@@ -5,7 +5,7 @@
 
 const { faker } = require('@faker-js/faker');
 
-describe('Primeiro fazer login no site', () => {
+describe('FUNCIONALIDADE LOGIN', () => {
     beforeEach(() => {
       cy.visit('https://seubarriga.wcaquino.me/login')
     })
@@ -13,14 +13,29 @@ describe('Primeiro fazer login no site', () => {
         cy.screenshot()
 
     });
-
-    it('cadastro de usuario no site seubarriga', () => {
+    it('login com sucesso no site seubarriga', () => {
+      cy.get('#email').type('vinijk91@gmail.com')
+      cy.get('#senha').type('xvrDCXmz5MUGqpD')
+      cy.get('.btn').click()
+      cy.get('.alert').should('contain','Bem vindo')
+  })
+    it('cadastro de usuario no site seubarriga com sucesso', () => {
         cy.get(':nth-child(2) > a').click()
         cy.get('#nome').type(faker.name.fullName())
         cy.get('#email').type(faker.internet.email())
         cy.get('#senha').type('jfjfjfjjfjf')
         cy.get('.btn').click()
+        cy.get('.alert').should('contain','Usuário inserido com sucesso')
     })
-  
+    it('cadastro de usuario no site seubarriga com campo usuario vazio', () => {
+      cy.get(':nth-child(2) > a').click()
+      cy.get('#nome').type('  ')
+      cy.get('#email').type(faker.internet.email())
+      cy.get('#senha').type(faker.internet.password())
+      cy.get('.btn').click()
+      cy.get('.alert').should('contain','Usuário inserido com sucesso')
+
   })
+
+})
   
