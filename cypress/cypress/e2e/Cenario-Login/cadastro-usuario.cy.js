@@ -14,7 +14,7 @@ describe('Primeiro fazer login no site', () => {
 
     });
 
-    it('login no site seubarriga', () => {
+    it('cadastro de usuario no site seubarriga', () => {
         cy.get(':nth-child(2) > a').click()
         cy.get('#nome').type(faker.name.fullName())
         cy.get('#email').type(faker.internet.email())

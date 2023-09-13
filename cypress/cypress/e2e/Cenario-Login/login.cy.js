@@ -12,7 +12,7 @@ describe('Primeiro acessar o site', () => {
 
     });
 
-    it('login no site seubarriga', () => {
+    it('login com sucesso no site seubarriga', () => {
         cy.get('#email').type('vinijk91@gmail.com')
         cy.get('#senha').type('xvrDCXmz5MUGqpD')
         cy.get('.btn').click()

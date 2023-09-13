@@ -5,7 +5,7 @@
 
 const { faker } = require('@faker-js/faker');
 
-describe('Primeiro fazer login no site', () => {
+describe('Primeiro fazer login no site com usuario ja cadastrado', () => {
     beforeEach(() => {
       cy.visit('https://seubarriga.wcaquino.me/login')
       cy.get('#email').type('vinijk91@gmail.com')
@@ -18,7 +18,7 @@ describe('Primeiro fazer login no site', () => {
 
     });
 
-    it('login no site seubarriga', () => {
+    it('adicionar conta', () => {
         cy.get('.dropdown-toggle').click()
         cy.get('.dropdown-menu > :nth-child(1) > a').click()
         cy.get('#nome').click()
